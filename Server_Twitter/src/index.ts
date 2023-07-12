@@ -1,10 +1,15 @@
-type Handle = () => Promise<string>
-const fullname = 'Uyen Nguyen'
+import express from 'express'
+import userRouter from './user.routes'
+const app = express()
 
-const handle: Handle = () => Promise.resolve(fullname)
-// console.log(fullname)
-// handle().then(console.log)
+const port = 3000
 
-handle().then((res) => {
-  console.log(res)
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
+
+app.use('/user', userRouter)
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 })
