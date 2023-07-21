@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import databaseService from '../services/database.services'
 import User from '../models/schemas/User.schema'
+import usersService from '../services/users.services'
 
 export const loginController = (req: Request, res: Response) => {
   const { email, password } = req.body
@@ -16,14 +17,9 @@ export const loginController = (req: Request, res: Response) => {
 export const registerControler = async (req: Request, res: Response) => {
   const { email, password } = req.body
   try {
-    //Goi den DB
-    const result = await databaseService.users.insertOne(
-      new User({
-        email,
-        password
-      })
-    )
-    console.log('result', result)
+    //Goi den DB- service
+    const result = await usersService.register({ email, password })
+
     return res.json({
       message: 'Register success',
       result
