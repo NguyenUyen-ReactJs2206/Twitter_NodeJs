@@ -49,7 +49,10 @@ export const registerValidator = validate(
           minUppercase: 1,
           minNumbers: 1,
           minSymbols: 1
-        }
+        },
+        //custom error
+        errorMessage:
+          'Password must be at least 6 characters long and contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 symbol'
       }
     },
     confirm_password: {
@@ -67,6 +70,16 @@ export const registerValidator = validate(
           minUppercase: 1,
           minNumbers: 1,
           minSymbols: 1
+        },
+        errorMessage:
+          'Password must be at least 6 characters long and contain at least 1 lowercase letter, 1 uppercase letter, 1 number, and 1 symbol'
+      },
+      custom: {
+        options: (value, { req }) => {
+          if (value !== req.body.password) {
+            throw new Error('Password confirmation does not match passwoord')
+          }
+          return true
         }
       }
     },
