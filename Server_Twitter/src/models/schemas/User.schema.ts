@@ -1,12 +1,8 @@
 //khi dung interface chi la kieu du lieu thoi
 // class dai dien cho du lieu va dai dien cho object, co the tao object dua tren class
 import { ObjectId } from 'mongodb'
+import { UserVerifyStatus } from '../../constants/enums'
 
-enum UserVerifyStatus {
-  Unverified, // chưa xác thực email, mặc định = 0
-  Verified, // đã xác thực email
-  Banned // bị khóa
-}
 interface UserType {
   _id?: ObjectId
   name?: string
