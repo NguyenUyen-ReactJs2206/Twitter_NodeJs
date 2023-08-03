@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { checkSchema } from 'express-validator'
 import { validate } from '../utils/validation'
-import databaseService from '../services/database.services'
 import usersService from '../services/users.services'
 
 export const loginValidator = (req: Request, res: Response, next: NextFunction) => {
