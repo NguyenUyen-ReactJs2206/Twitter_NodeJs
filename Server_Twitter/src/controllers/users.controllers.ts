@@ -14,7 +14,8 @@ export const loginController = (req: Request, res: Response) => {
     error: 'Login failed'
   })
 }
-export const registerControler = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
+
+export const registerController = async (req: Request<ParamsDictionary, any, RegisterReqBody>, res: Response) => {
   try {
     //Goi den DB- service
     const result = await usersService.register(req.body)
